@@ -16,6 +16,7 @@
 		27F77C44221C576300674A66 /* MemoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F77C43221C576300674A66 /* MemoListVC.swift */; };
 		27F77C46221C577C00674A66 /* MemoFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F77C45221C577C00674A66 /* MemoFormVC.swift */; };
 		27F77C48221C585800674A66 /* MemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F77C47221C585800674A66 /* MemoCell.swift */; };
+		27F77C4C221C6AB100674A66 /* MemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F77C4B221C6AB100674A66 /* MemoData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		27F77C43221C576300674A66 /* MemoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListVC.swift; sourceTree = "<group>"; };
 		27F77C45221C577C00674A66 /* MemoFormVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoFormVC.swift; sourceTree = "<group>"; };
 		27F77C47221C585800674A66 /* MemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoCell.swift; sourceTree = "<group>"; };
+		27F77C4B221C6AB100674A66 /* MemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				27F77C41221C56A900674A66 /* MemoReadVC.swift */,
 				27F77C43221C576300674A66 /* MemoListVC.swift */,
 				27F77C45221C577C00674A66 /* MemoFormVC.swift */,
+				27F77C4B221C6AB100674A66 /* MemoData.swift */,
 			);
 			path = MemoryApp;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 				27F77C42221C56A900674A66 /* MemoReadVC.swift in Sources */,
 				27F77C46221C577C00674A66 /* MemoFormVC.swift in Sources */,
 				27F77C31221C447500674A66 /* MemoryApp.xcdatamodeld in Sources */,
+				27F77C4C221C6AB100674A66 /* MemoData.swift in Sources */,
 				27F77C44221C576300674A66 /* MemoListVC.swift in Sources */,
 				27F77C29221C447500674A66 /* AppDelegate.swift in Sources */,
 				27F77C48221C585800674A66 /* MemoCell.swift in Sources */,

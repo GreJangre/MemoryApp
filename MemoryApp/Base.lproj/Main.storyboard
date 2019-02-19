@@ -14,7 +14,7 @@
         <scene sceneID="dP0-KR-B0j">
             <objects>
                 <tableViewController id="bvK-y5-i3P" customClass="MemoListVC" customModule="MemoryApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6fq-PH-hGc">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6fq-PH-hGc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -71,6 +71,11 @@
                                         <constraint firstItem="V29-cr-QUV" firstAttribute="leading" secondItem="i2Q-26-CgC" secondAttribute="trailing" constant="10" id="x20-r8-QbB"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contents" destination="i2Q-26-CgC" id="yKq-uV-sGW"/>
+                                    <outlet property="regdate" destination="V29-cr-QUV" id="VxA-Wj-2j0"/>
+                                    <outlet property="subject" destination="mUQ-GR-0Tl" id="Zj4-pH-Fej"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="memoCellWithImage" rowHeight="80" id="3p6-6J-6cH" customClass="MemoCell" customModule="MemoryApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="108" width="375" height="80"/>
@@ -128,6 +133,12 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="aMt-3I-RKk" secondAttribute="trailing" id="woY-xp-rqZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contents" destination="FcH-U0-2WH" id="Wcy-ME-QJW"/>
+                                    <outlet property="img" destination="gpN-Gs-J8t" id="DPV-fi-wvJ"/>
+                                    <outlet property="regdate" destination="aMt-3I-RKk" id="BeZ-aS-oTg"/>
+                                    <outlet property="subject" destination="mh7-97-UC5" id="83W-Bu-Bfs"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -205,10 +216,22 @@
                     </view>
                     <navigationItem key="navigationItem" title="메모 작성" id="VUY-ja-YKA">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="camera" id="BAA-vV-fQs"/>
-                            <barButtonItem title="저장" id="7bi-mf-jml"/>
+                            <barButtonItem systemItem="camera" id="BAA-vV-fQs">
+                                <connections>
+                                    <action selector="pick:" destination="Mxo-q1-qWH" id="REi-Vh-EB0"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="저장" id="7bi-mf-jml">
+                                <connections>
+                                    <action selector="save:" destination="Mxo-q1-qWH" id="rEj-0E-EH3"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="contents" destination="gNN-6r-aTa" id="Gzd-g0-LlM"/>
+                        <outlet property="preview" destination="onR-Bc-F67" id="wdE-bD-Z0c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="693-3c-C1S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -217,7 +240,7 @@
         <!--Memo ReadVC-->
         <scene sceneID="2nv-PI-clE">
             <objects>
-                <viewController id="9MN-5P-nPe" customClass="MemoReadVC" customModule="MemoryApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemoRead" id="9MN-5P-nPe" customClass="MemoReadVC" customModule="MemoryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LbQ-su-nP5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -258,6 +281,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="46W-fv-0dy"/>
                     </view>
+                    <connections>
+                        <outlet property="contents" destination="oPM-a5-qf8" id="Vur-AR-ldb"/>
+                        <outlet property="img" destination="FlP-r3-a3D" id="UD7-ll-G8V"/>
+                        <outlet property="subject" destination="mQZ-jn-y4n" id="fNp-h6-FbD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UTC-ql-hdH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
