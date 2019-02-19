@@ -13,7 +13,7 @@
         <!--목록-->
         <scene sceneID="dP0-KR-B0j">
             <objects>
-                <tableViewController id="bvK-y5-i3P" sceneMemberID="viewController">
+                <tableViewController id="bvK-y5-i3P" customClass="MemoListVC" customModule="MemoryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6fq-PH-hGc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,7 +24,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="memoCell" rowHeight="80" id="E4w-8B-URb">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="memoCell" rowHeight="80" id="E4w-8B-URb" customClass="MemoCell" customModule="MemoryApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E4w-8B-URb" id="ylX-dN-vUy">
@@ -72,7 +72,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="memoCellWithImage" rowHeight="80" id="3p6-6J-6cH">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="memoCellWithImage" rowHeight="80" id="3p6-6J-6cH" customClass="MemoCell" customModule="MemoryApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="108" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3p6-6J-6cH" id="dgA-5B-muG">
@@ -171,7 +171,7 @@
         <!--메모 작성-->
         <scene sceneID="M9W-4p-oFl">
             <objects>
-                <viewController id="Mxo-q1-qWH" sceneMemberID="viewController">
+                <viewController id="Mxo-q1-qWH" customClass="MemoFormVC" customModule="MemoryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eAY-5T-iCp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -214,10 +214,10 @@
             </objects>
             <point key="canvasLocation" x="1940" y="1150"/>
         </scene>
-        <!--Title-->
+        <!--Memo ReadVC-->
         <scene sceneID="2nv-PI-clE">
             <objects>
-                <viewController id="9MN-5P-nPe" sceneMemberID="viewController">
+                <viewController id="9MN-5P-nPe" customClass="MemoReadVC" customModule="MemoryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LbQ-su-nP5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -258,7 +258,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="46W-fv-0dy"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="Ckr-4i-H4Q"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UTC-ql-hdH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
