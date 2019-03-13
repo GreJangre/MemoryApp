@@ -16,6 +16,19 @@ class MemoFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     
     override func viewDidLoad() {
         self.contents.delegate = self
+        
+        let bgImage = UIImage(named: "memo-background.png")!
+        self.view.backgroundColor = UIColor(patternImage: bgImage)
+        
+        self.contents.layer.borderWidth = 0
+        self.contents.layer.borderColor = UIColor.clear.cgColor
+        self.contents.backgroundColor = UIColor.clear
+        
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 9
+        self.contents.attributedText = NSAttributedString(string: " ",
+                                                          attributes: [NSAttributedString.Key.paragraphStyle: style])
+        self.contents.text = ""
     }
     
     @IBAction func save(_ sender: Any) {
@@ -62,4 +75,13 @@ class MemoFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         
         self.navigationItem.title = subject
     }
+//    
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        let bar = self.navigationController?.navigationBar
+//        
+//        let ts = TimeInterval(0.3)
+//        UIView.animate(withDuration: ts) {
+//            bar?.alpha = (bar?.alpha == 0 ? 1 : 0)
+//        }
+//    }
 }
