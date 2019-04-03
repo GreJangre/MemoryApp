@@ -31,6 +31,7 @@
 		27F8C895223FA12F0074DB44 /* profile-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 27F8C88D223FA12F0074DB44 /* profile-bg.png */; };
 		27F8C896223FA12F0074DB44 /* icon02.png in Resources */ = {isa = PBXBuildFile; fileRef = 27F8C88E223FA12F0074DB44 /* icon02.png */; };
 		27F8C898223FA4770074DB44 /* SideBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F8C897223FA4770074DB44 /* SideBarVC.swift */; };
+		27F8C89C223FAF260074DB44 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F8C89B223FAF260074DB44 /* ProfileVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		27F8C88D223FA12F0074DB44 /* profile-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-bg.png"; sourceTree = "<group>"; };
 		27F8C88E223FA12F0074DB44 /* icon02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon02.png; sourceTree = "<group>"; };
 		27F8C897223FA4770074DB44 /* SideBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarVC.swift; sourceTree = "<group>"; };
+		27F8C89B223FAF260074DB44 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +101,6 @@
 				27E6E87522392608002D20E4 /* SWRevealViewController.m */,
 				27F77C28221C447500674A66 /* AppDelegate.swift */,
 				27F77C2C221C447500674A66 /* Main.storyboard */,
-				27F77C47221C585800674A66 /* MemoCell.swift */,
 				27F77C32221C447600674A66 /* Assets.xcassets */,
 				27F77C34221C447600674A66 /* LaunchScreen.storyboard */,
 				27F77C37221C447600674A66 /* Info.plist */,
@@ -107,10 +108,12 @@
 				27F77C41221C56A900674A66 /* MemoReadVC.swift */,
 				27F77C45221C577C00674A66 /* MemoFormVC.swift */,
 				27F77C43221C576300674A66 /* MemoListVC.swift */,
+				27F8C897223FA4770074DB44 /* SideBarVC.swift */,
+				27F8C89B223FAF260074DB44 /* ProfileVC.swift */,
+				27F77C47221C585800674A66 /* MemoCell.swift */,
 				27F77C4B221C6AB100674A66 /* MemoData.swift */,
 				27E6E86D223761CA002D20E4 /* CSLogButton.swift */,
 				27E6E87322392607002D20E4 /* MemoryApp-Bridging-Header.h */,
-				27F8C897223FA4770074DB44 /* SideBarVC.swift */,
 			);
 			path = MemoryApp;
 			sourceTree = "<group>";
@@ -165,7 +168,7 @@
 				TargetAttributes = {
 					27F77C24221C447500674A66 = {
 						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -225,6 +228,7 @@
 				27E6E87622392608002D20E4 /* SWRevealViewController.m in Sources */,
 				27F77C44221C576300674A66 /* MemoListVC.swift in Sources */,
 				27F77C29221C447500674A66 /* AppDelegate.swift in Sources */,
+				27F8C89C223FAF260074DB44 /* ProfileVC.swift in Sources */,
 				27F77C48221C585800674A66 /* MemoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,7 +387,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MemoryApp/MemoryApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -403,7 +407,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.grejangre.MemoryApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MemoryApp/MemoryApp-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

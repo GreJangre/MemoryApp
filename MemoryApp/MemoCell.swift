@@ -9,6 +9,7 @@
 import UIKit
 
 class MemoCell: UITableViewCell {
+    // MARK: IBOutlet
     @IBOutlet var subject: UILabel!
     @IBOutlet var contents: UILabel!
     @IBOutlet var regdate: UILabel!

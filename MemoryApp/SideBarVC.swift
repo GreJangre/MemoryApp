@@ -12,9 +12,7 @@ class SideBarVC: UITableViewController {
     let nameLabel = UILabel()
     let emailLabel = UILabel()
     let profileImage = UIImageView()
-    
     let titles = ["새글 작성하기", "친구 새글", "달력으로 보기", "공지사항", "통계", "계정 관리"]
-    
     let icons = [
     UIImage(named: "icon01.png"),
     UIImage(named: "icon02.png"),
@@ -24,7 +22,7 @@ class SideBarVC: UITableViewController {
     UIImage(named: "icon06.png"),
     ]
     
-    // MARK: - override
+    // MARK: - Override
     override func viewDidLoad() {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 70))
         headerView.backgroundColor = UIColor.brown
@@ -57,6 +55,8 @@ class SideBarVC: UITableViewController {
         self.profileImage.layer.masksToBounds = true
         view.addSubview(self.profileImage)
     }
+    
+    // MARK: Data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.titles.count
     }
@@ -72,6 +72,7 @@ class SideBarVC: UITableViewController {
         return cell
     }
     
+    // MARK: Delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             let uv = self.storyboard?.instantiateViewController(withIdentifier: "MemoForm")
@@ -80,6 +81,11 @@ class SideBarVC: UITableViewController {
             target.pushViewController(uv!, animated: true)
             
             self.revealViewController()?.revealToggle(self)
+        } else if indexPath.row == 5 {
+            let uv = self.storyboard?.instantiateViewController(withIdentifier: "_Profile")
+            self.present(uv!, animated: true) {
+                self.revealViewController()?.revealToggle(self)
+            }
         }
     }
 }

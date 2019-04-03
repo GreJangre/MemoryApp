@@ -11,26 +11,11 @@ import UIKit
 class MemoFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
     var subject: String?
     
+    // MARK: IBOutlet
     @IBOutlet var contents: UITextView!
     @IBOutlet var preview: UIImageView!
     
-    override func viewDidLoad() {
-        self.contents.delegate = self
-        
-        let bgImage = UIImage(named: "memo-background.png")!
-        self.view.backgroundColor = UIColor(patternImage: bgImage)
-        
-        self.contents.layer.borderWidth = 0
-        self.contents.layer.borderColor = UIColor.clear.cgColor
-        self.contents.backgroundColor = UIColor.clear
-        
-        let style = NSMutableParagraphStyle()
-        style.lineSpacing = 9
-        self.contents.attributedText = NSAttributedString(string: " ",
-                                                          attributes: [NSAttributedString.Key.paragraphStyle: style])
-        self.contents.text = ""
-    }
-    
+    // MARK: IBAction
     @IBAction func save(_ sender: Any) {
         guard self.contents.text?.isEmpty == false else {
             let alert = UIAlertController(title: nil, message: "내용을 입력해 주세요", preferredStyle: .alert)
@@ -62,6 +47,7 @@ class MemoFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         self.present(picker, animated: false)
     }
     
+    // MARK: Function
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         self.preview.image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
         
@@ -74,6 +60,24 @@ class MemoFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         self.subject = contents.substring(with: NSRange(location: 0, length: length))
         
         self.navigationItem.title = subject
+    }
+    
+    // MARK: Override
+    override func viewDidLoad() {
+        self.contents.delegate = self
+        
+        let bgImage = UIImage(named: "memo-background.png")!
+        self.view.backgroundColor = UIColor(patternImage: bgImage)
+        
+        self.contents.layer.borderWidth = 0
+        self.contents.layer.borderColor = UIColor.clear.cgColor
+        self.contents.backgroundColor = UIColor.clear
+        
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 9
+        self.contents.attributedText = NSAttributedString(string: " ",
+                                                          attributes: [NSAttributedString.Key.paragraphStyle: style])
+        self.contents.text = ""
     }
 //    
 //    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

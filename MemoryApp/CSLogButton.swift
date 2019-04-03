@@ -14,9 +14,11 @@ public enum CSLogType: Int {
     case tag
 }
 
+// API
 public class CSLogButton: UIButton {
     public var logType: CSLogType = .basic
     
+    // MARK: init
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -26,6 +28,7 @@ public class CSLogButton: UIButton {
         self.addTarget(self, action: #selector(logging(_:)), for: .touchUpInside)
     }
     
+    // MARK: objc
     @objc func logging(_ sender: UIButton) {
         switch self.logType {
         case .basic:
