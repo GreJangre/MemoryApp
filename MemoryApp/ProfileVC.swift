@@ -14,7 +14,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let tv = UITableView()
     let uinfo = UserInfoManager()
     
-    // MARK: Override
+    // MARK: - Override
     override func viewDidLoad() {
         self.navigationItem.title = "프로필"
         
@@ -54,9 +54,11 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.view.addSubview(self.tv)
         
         self.navigationController?.navigationBar.isHidden = true
+        
+        self.drawBtn()
     }
     
-    // MARK: Data source
+    // MARK: - Data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
@@ -87,7 +89,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    // MARK: @objc
+    // MARK: - @objc
     @objc func close(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
     }
@@ -110,6 +112,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             if self.uinfo.login(account: account, passwd: passwd) {
                 self.tv.reloadData()
                 self.profileImage.image = self.uinfo.profile
+                self.drawBtn()
             } else {
                 let msg = "로그인에 실패하였습니다."
                 let alert = UIAlertController(title: nil, message: msg, preferredStyle: .alert)
@@ -130,8 +133,36 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             if self.uinfo.logout() {
                 self.tv.reloadData()
                 self.profileImage.image = self.uinfo.profile
+                self.drawBtn()
             }
         })
         self.present(alert, animated: false)
+    }
+    
+    // MARK: - func
+    func drawBtn() {
+        let v = UIView()
+        v.frame.size.width = self.view.frame.width
+        v.frame.size.height = 40
+        v.frame.origin.x = 0
+        v.frame.origin.y = self.tv.frame.origin.y + self.tv.frame.height
+        v.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.0)
+        
+        self.view.addSubview(v)
+        
+        let btn = UIButton(type: .system)
+        btn.frame.size.width = 100
+        btn.frame.size.height = 30
+        btn.center.x = v.frame.size.width / 2
+        btn.center.y = v.frame.size.height / 2
+        
+        if self.uinfo.isLogin == true {
+            btn.setTitle("로그아웃", for: .normal)
+            btn.addTarget(self, action: #selector(doLogout(_:)), for: .touchUpInside)
+        } else {
+            btn.setTitle("로그인", for: .normal)
+            btn.addTarget(self, action: #selector(doLogin(_:)), for: .touchUpInside)
+        }
+        v.addSubview(btn)
     }
 }
