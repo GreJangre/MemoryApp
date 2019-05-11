@@ -34,7 +34,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.view.addSubview(bgImage)
         
         // 프로필 이미지
-        let image = UIImage(named: "account.jpg")
+        let image = self.uinfo.profile
         
         self.profileImage.image = image
         self.profileImage.frame.size = CGSize(width: 100, height: 100)
@@ -71,14 +71,20 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             cell.textLabel?.text = "이름"
-            cell.detailTextLabel?.text = "장그레"
+            cell.detailTextLabel?.text = self.uinfo.name ?? "Login please"
         case 1:
             cell.textLabel?.text = "계정"
-            cell.detailTextLabel?.text = "jangre@naver.com"
+            cell.detailTextLabel?.text = self.uinfo.account ?? "Login please"
         default:
             ()
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if self.uinfo.isLogin == false {
+            self.doLogin(self.tv)
+        }
     }
     
     // MARK: @objc
@@ -86,4 +92,46 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.presentingViewController?.dismiss(animated: true)
     }
     
+    @objc func doLogin(_ sender: Any) {
+        let loginAlert = UIAlertController(title: "LOGIN", message: nil, preferredStyle: .alert)
+
+        loginAlert.addTextField() { (tf) in
+            tf.placeholder = "Your Account"
+        }
+        loginAlert.addTextField() { (tf) in
+            tf.placeholder = "Password"
+            tf.isSecureTextEntry = true
+        }
+        loginAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        loginAlert.addAction(UIAlertAction(title: "Login", style: .destructive) { (_) in
+            let account = loginAlert.textFields?[0].text ?? ""
+            let passwd = loginAlert.textFields?[1].text ?? ""
+
+            if self.uinfo.login(account: account, passwd: passwd) {
+                self.tv.reloadData()
+                self.profileImage.image = self.uinfo.profile
+            } else {
+                let msg = "로그인에 실패하였습니다."
+                let alert = UIAlertController(title: nil, message: msg, preferredStyle: .alert)
+
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+                self.present(alert, animated: false)
+            }
+        })
+        self.present(loginAlert, animated: false)
+    }
+
+    @objc func doLogout(_ sender: Any) {
+        let msg = "로그아웃하시겠습니까?"
+        let alert = UIAlertController(title: nil, message: msg, preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel))
+        alert.addAction(UIAlertAction(title: "확인", style: .destructive) { (_) in
+            if self.uinfo.logout() {
+                self.tv.reloadData()
+                self.profileImage.image = self.uinfo.profile
+            }
+        })
+        self.present(alert, animated: false)
+    }
 }
