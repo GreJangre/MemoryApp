@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let profileImage = UIImageView()
     let tv = UITableView()
@@ -46,6 +46,10 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         self.view.addSubview(self.profileImage)
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(profile(_:)))
+        self.profileImage.addGestureRecognizer(tap)
+        self.profileImage.isUserInteractionEnabled = true
+        
         // 프로필 내용
         self.tv.frame = CGRect(x: 0, y: self.profileImage.frame.origin.y + self.profileImage.frame.size.height + 20, width: self.view.frame.width, height: 100)
         self.tv.dataSource = self
@@ -58,7 +62,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.drawBtn()
     }
     
-    // MARK: - Data source
+    // MARK: - tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
@@ -87,6 +91,50 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if self.uinfo.isLogin == false {
             self.doLogin(self.tv)
         }
+    }
+    
+    // MARK: - image
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let img = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            self.uinfo.profile = img
+            self.profileImage.image = img
+        }
+        picker.dismiss(animated: true)
+    }
+    
+    // MARK: - func
+    func drawBtn() {
+        let v = UIView()
+        v.frame.size.width = self.view.frame.width
+        v.frame.size.height = 40
+        v.frame.origin.x = 0
+        v.frame.origin.y = self.tv.frame.origin.y + self.tv.frame.height
+        v.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.0)
+        
+        self.view.addSubview(v)
+        
+        let btn = UIButton(type: .system)
+        btn.frame.size.width = 100
+        btn.frame.size.height = 30
+        btn.center.x = v.frame.size.width / 2
+        btn.center.y = v.frame.size.height / 2
+        
+        if self.uinfo.isLogin == true {
+            btn.setTitle("로그아웃", for: .normal)
+            btn.addTarget(self, action: #selector(doLogout(_:)), for: .touchUpInside)
+        } else {
+            btn.setTitle("로그인", for: .normal)
+            btn.addTarget(self, action: #selector(doLogin(_:)), for: .touchUpInside)
+        }
+        v.addSubview(btn)
+    }
+    
+    func imgPicker( _ source: UIImagePickerController.SourceType) {
+        let picker = UIImagePickerController()
+        picker.sourceType = source
+        picker.delegate = self
+        picker.allowsEditing = true
+        self.present(picker, animated: true)
     }
     
     // MARK: - @objc
@@ -139,30 +187,34 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.present(alert, animated: false)
     }
     
-    // MARK: - func
-    func drawBtn() {
-        let v = UIView()
-        v.frame.size.width = self.view.frame.width
-        v.frame.size.height = 40
-        v.frame.origin.x = 0
-        v.frame.origin.y = self.tv.frame.origin.y + self.tv.frame.height
-        v.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.0)
-        
-        self.view.addSubview(v)
-        
-        let btn = UIButton(type: .system)
-        btn.frame.size.width = 100
-        btn.frame.size.height = 30
-        btn.center.x = v.frame.size.width / 2
-        btn.center.y = v.frame.size.height / 2
-        
-        if self.uinfo.isLogin == true {
-            btn.setTitle("로그아웃", for: .normal)
-            btn.addTarget(self, action: #selector(doLogout(_:)), for: .touchUpInside)
-        } else {
-            btn.setTitle("로그인", for: .normal)
-            btn.addTarget(self, action: #selector(doLogin(_:)), for: .touchUpInside)
+    @objc func profile(_ sender: UIButton) {
+        guard self.uinfo.account != nil else {
+            self.doLogin(self)
+            return
         }
-        v.addSubview(btn)
+        
+        let alert = UIAlertController(title: nil, message: "사진을 가져올 곳을 선택해 주세요", preferredStyle: .actionSheet)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            alert.addAction(UIAlertAction(title: "카메라", style: .default) { (_) in
+                self.imgPicker(.camera)
+            })
+        }
+        
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+            alert.addAction(UIAlertAction(title: "저장된 앨범", style: .default) { (_) in
+                self.imgPicker(.savedPhotosAlbum)
+            })
+        }
+        
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            alert.addAction(UIAlertAction(title: "포토 라이브러리", style: .default) { (_) in
+                self.imgPicker(.photoLibrary)
+            })
+        }
+        
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
     }
+    
+
 }
