@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2745259A2299986500B15688 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 274525992299986500B15688 /* Tutorial.storyboard */; };
+		2745259C22999C5400B15688 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2745259B22999C5400B15688 /* Utils.swift */; };
+		2745259E22999DC500B15688 /* TutorialContentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2745259D22999DC500B15688 /* TutorialContentsVC.swift */; };
+		274525A32299A39900B15688 /* TutorialMasterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274525A22299A39900B15688 /* TutorialMasterVC.swift */; };
 		27457750223F61A10019EF6A /* sidemenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 2745774F223F61A10019EF6A /* sidemenu.png */; };
 		2785736722856ACE00F92C87 /* UserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2785736622856ACE00F92C87 /* UserInfoManager.swift */; };
 		27E6E86E223761CA002D20E4 /* CSLogButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E6E86D223761CA002D20E4 /* CSLogButton.swift */; };
@@ -36,6 +40,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		274525992299986500B15688 /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
+		2745259B22999C5400B15688 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		2745259D22999DC500B15688 /* TutorialContentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialContentsVC.swift; sourceTree = "<group>"; };
+		274525A22299A39900B15688 /* TutorialMasterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialMasterVC.swift; sourceTree = "<group>"; };
 		2745774F223F61A10019EF6A /* sidemenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sidemenu.png; sourceTree = "<group>"; };
 		2785736622856ACE00F92C87 /* UserInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoManager.swift; sourceTree = "<group>"; };
 		27E6E86D223761CA002D20E4 /* CSLogButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSLogButton.swift; sourceTree = "<group>"; };
@@ -79,6 +87,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2745259F22999DED00B15688 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				274525A22299A39900B15688 /* TutorialMasterVC.swift */,
+				2745259D22999DC500B15688 /* TutorialContentsVC.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		274525A022999E1C00B15688 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				27F77C41221C56A900674A66 /* MemoReadVC.swift */,
+				27F77C45221C577C00674A66 /* MemoFormVC.swift */,
+				27F8C897223FA4770074DB44 /* SideBarVC.swift */,
+				27F8C89B223FAF260074DB44 /* ProfileVC.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		274525A122999E4F00B15688 /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				27F77C2C221C447500674A66 /* Main.storyboard */,
+				274525992299986500B15688 /* Tutorial.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
 		27F77C1C221C447500674A66 = {
 			isa = PBXGroup;
 			children = (
@@ -99,19 +136,18 @@
 		27F77C27221C447500674A66 /* MemoryApp */ = {
 			isa = PBXGroup;
 			children = (
-				27E6E87422392608002D20E4 /* SWRevealViewController.h */,
-				27E6E87522392608002D20E4 /* SWRevealViewController.m */,
+				274525A022999E1C00B15688 /* ViewController */,
+				2745259F22999DED00B15688 /* Tutorial */,
+				274525A122999E4F00B15688 /* storyboard */,
 				2785736622856ACE00F92C87 /* UserInfoManager.swift */,
-				27F77C28221C447500674A66 /* AppDelegate.swift */,
-				27F77C41221C56A900674A66 /* MemoReadVC.swift */,
-				27F77C45221C577C00674A66 /* MemoFormVC.swift */,
-				27F77C43221C576300674A66 /* MemoListVC.swift */,
-				27F8C897223FA4770074DB44 /* SideBarVC.swift */,
-				27F8C89B223FAF260074DB44 /* ProfileVC.swift */,
 				27F77C47221C585800674A66 /* MemoCell.swift */,
+				27F77C43221C576300674A66 /* MemoListVC.swift */,
 				27F77C4B221C6AB100674A66 /* MemoData.swift */,
 				27E6E86D223761CA002D20E4 /* CSLogButton.swift */,
-				27F77C2C221C447500674A66 /* Main.storyboard */,
+				2745259B22999C5400B15688 /* Utils.swift */,
+				27F77C28221C447500674A66 /* AppDelegate.swift */,
+				27E6E87422392608002D20E4 /* SWRevealViewController.h */,
+				27E6E87522392608002D20E4 /* SWRevealViewController.m */,
 				27F77C32221C447600674A66 /* Assets.xcassets */,
 				27F77C34221C447600674A66 /* LaunchScreen.storyboard */,
 				27F77C37221C447600674A66 /* Info.plist */,
@@ -208,6 +244,7 @@
 				27F8C892223FA12F0074DB44 /* icon04.png in Resources */,
 				27E6E870223764D5002D20E4 /* button-bg.png in Resources */,
 				27457750223F61A10019EF6A /* sidemenu.png in Resources */,
+				2745259A2299986500B15688 /* Tutorial.storyboard in Resources */,
 				27F8C896223FA12F0074DB44 /* icon02.png in Resources */,
 				27F77C33221C447600674A66 /* Assets.xcassets in Resources */,
 				27F77C2E221C447500674A66 /* Main.storyboard in Resources */,
@@ -227,11 +264,14 @@
 				2785736722856ACE00F92C87 /* UserInfoManager.swift in Sources */,
 				27F77C46221C577C00674A66 /* MemoFormVC.swift in Sources */,
 				27F77C31221C447500674A66 /* MemoryApp.xcdatamodeld in Sources */,
+				2745259C22999C5400B15688 /* Utils.swift in Sources */,
 				27F77C4C221C6AB100674A66 /* MemoData.swift in Sources */,
 				27F8C898223FA4770074DB44 /* SideBarVC.swift in Sources */,
+				2745259E22999DC500B15688 /* TutorialContentsVC.swift in Sources */,
 				27E6E87622392608002D20E4 /* SWRevealViewController.m in Sources */,
 				27F77C44221C576300674A66 /* MemoListVC.swift in Sources */,
 				27F77C29221C447500674A66 /* AppDelegate.swift in Sources */,
+				274525A32299A39900B15688 /* TutorialMasterVC.swift in Sources */,
 				27F8C89C223FAF260074DB44 /* ProfileVC.swift in Sources */,
 				27F77C48221C585800674A66 /* MemoCell.swift in Sources */,
 			);
